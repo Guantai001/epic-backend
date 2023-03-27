@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_27_100315) do
+ActiveRecord::Schema.define(version: 2023_03_27_134503) do
 
   create_table "bookings", force: :cascade do |t|
     t.string "phone"
     t.string "date"
     t.string "capacity"
-    t.integer "user_id", null: false
+    t.integer "usr_id", null: false
     t.integer "destination_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["destination_id"], name: "index_bookings_on_destination_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["usr_id"], name: "index_bookings_on_usr_id"
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 2023_03_27_100315) do
     t.string "status"
     t.string "amount"
     t.string "payment"
-    t.integer "user_id", null: false
+    t.integer "usr_id", null: false
     t.integer "booking_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["booking_id"], name: "index_payments_on_booking_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
+    t.index ["usr_id"], name: "index_payments_on_usr_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "usrs", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2023_03_27_100315) do
   end
 
   add_foreign_key "bookings", "destinations"
-  add_foreign_key "bookings", "users"
+  add_foreign_key "bookings", "usrs"
   add_foreign_key "payments", "bookings"
-  add_foreign_key "payments", "users"
+  add_foreign_key "payments", "usrs"
 end

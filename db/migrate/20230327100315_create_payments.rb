@@ -6,7 +6,7 @@ class CreatePayments < ActiveRecord::Migration[6.1]
       t.string :payment
 
 
-      t.references :user, null: false, foreign_key: true
+      t.references :usr, null: false, foreign_key: true
       t.references :booking, null: false, foreign_key: true
 
       t.timestamps

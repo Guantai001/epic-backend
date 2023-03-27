@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :usrs
   resources :payments
   resources :bookings
   resources :users
