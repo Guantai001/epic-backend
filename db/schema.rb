@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_27_142317) do
+ActiveRecord::Schema.define(version: 2023_03_27_142636) do
 
   create_table "books", force: :cascade do |t|
     t.string "phone"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 2023_03_27_142317) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pays", force: :cascade do |t|
+    t.string "status"
+    t.string "amount"
+    t.string "method"
+    t.integer "book_id", null: false
+    t.integer "usr_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_pays_on_book_id"
+    t.index ["usr_id"], name: "index_pays_on_usr_id"
+  end
+
   create_table "usrs", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -44,4 +56,6 @@ ActiveRecord::Schema.define(version: 2023_03_27_142317) do
 
   add_foreign_key "books", "destnations"
   add_foreign_key "books", "usrs"
+  add_foreign_key "pays", "books"
+  add_foreign_key "pays", "usrs"
 end

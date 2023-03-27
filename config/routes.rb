@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pays
   resources :books
   resources :destnations
   resources :destinations
