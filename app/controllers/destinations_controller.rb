@@ -4,7 +4,7 @@ class DestinationsController < ApplicationController
   # GET /destinations or /destinations.json
   def index
     destination = Destination.all
-    render json:  destination 
+    render json: destination
   end
 
   # GET /destinations/1 or /destinations/1.json
